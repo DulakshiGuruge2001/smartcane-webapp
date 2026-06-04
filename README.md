@@ -4,9 +4,7 @@
 
 ## 📹 Demo Video
 
-Watch the SmartCane application in action! Check out our [**Demo Video**](https://youtu.be/your-demo-video-link) to see how the app helps farmers predict sugarcane yield with AI-powered insights.
-
-> *Note: Replace the link above with your actual demo video URL*
+Watch the SmartCane application in action! Check out the [**Demo Video**](https://drive.google.com/file/d/1VBeFBZwBXA5A78GbZg2MRCEcKRilEiLt/view?usp=drive_link) to see how the app helps farmers predict sugarcane yield with AI-powered insights.
 
 ## Overview
 
