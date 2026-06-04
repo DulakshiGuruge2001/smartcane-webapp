@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCane - Sugarcane Yield Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #81c784;
+            --accent-color: #ff8f00;
+            --light-color: #f1f8e9;
+            --dark-color: #1b5e20;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--light-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            border-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            max-height: 80%;
+            z-index: 1;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+        }
+        
+        .prediction-result {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light-color);
+            display: none;
+        }
+        
+        .high-yield {
+            color: var(--primary-color);
+            background-color: #e8f5e9;
+        }
+        
+        .low-yield {
+            color: #c62828;
+            background-color: #ffebee;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        .team-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-name {
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-top: 10px;
+        }
+        
+        .team-position {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .mission-statement {
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .page {
+            display: none;
+            padding: 60px 0;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-image {
+                position: relative;
+                transform: none;
+                margin-top: 30px;
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home')">SmartCane</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('predict')">Predict Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('about')">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('contact')">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-content">
+                        <h1 class="hero-title">Predict Your Sugarcane Yield with Precision</h1>
+                        <p class="hero-subtitle">Harness AI and data analytics to forecast your harvest accurately and optimize your farming practices.</p>
+                        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('predict')">Get Started!</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="sugercane.jpg" alt="Female Farmer" class="img-fluid hero-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5 py-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h3>Accurate Predictions</h3>
+                        <p>Our advanced AI model provides reliable yield forecasts based on your farm's specific conditions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-leaf fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h3>Optimized Farming</h3>
+                        <p>Get actionable insights to improve your sugarcane cultivation practices and maximize yield.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-globe-asia fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h3>Regional Focus</h3>
+                        <p>Specially designed for South Asian farmers with local conditions in mind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Predict Now Page -->
+    <div id="predict" class="page">
+        <section class="container">
+            <h2 class="section-title">Sugarcane Yield Predictor</h2>
+            <p class="section-subtitle">Input your farm details to forecast your sugarcane yield accurately</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <form id="yieldForm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="area" class="form-label">Area (hectares)</label>
+                                    <input type="number" class="form-control" id="area" step="0.01" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="rainfall" class="form-label">Rainfall Average (mm)</label>
+                                    <input type="number" class="form-control" id="rainfall" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="contractArea" class="form-label">Contract Area (hectares)</label>
+                                    <input type="number" class="form-control" id="contractArea" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="fertilizerType" class="form-label">Fertilizer Type</label>
+                                    <select class="form-select" id="fertilizerType" required>
+                                        <option value="">Select...</option>
+                                        <option value="Organic">Organic</option>
+                                        <option value="Chemical">Chemical</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="epidemic" class="form-label">Epidemic Control</label>
+                                    <select class="form-select" id="epidemic" required>
+                                        <option value="">Select...</option>
+                                        <option value="Preemergent">Preemergent</option>
+                                        <option value="Herbicide">Herbicide</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="waterType" class="form-label">Water Type</label>
+                                    <select class="form-select" id="waterType" required>
+                                        <option value="">Select...</option>
+                                        <option value="Rain">Rain</option>
+                                        <option value="Natural Canal">Natural Canal</option>
+                                        <option value="Ground Water">Ground Water</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="soilType" class="form-label">Soil Type</label>
+                                    <select class="form-select" id="soilType" required>
+                                        <option value="">Select...</option>
+                                        <option value="Silty Clay">Silty Clay</option>
+                                        <option value="Loam">Loam</option>
+                                        <option value="Ferus Soil">Ferus Soil</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="fertilizer" class="form-label">Fertilizer Composition</label>
+                                    <select class="form-select" id="fertilizer" required>
+                                        <option value="">Select...</option>
+                                        <option value="16-16-16">16-16-16</option>
+                                        <option value="15-15-15">15-15-15</option>
+                                        <option value="46-0-0">46-0-0</option>
+					<option value="7-25-7">7-25-7</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="country" class="form-label">Country</label>
+                                    <select class="form-select" id="country" required>
+                                        <option value="">Select...</option>
+                                        <option value="India">India</option>
+                                        <option value="Bangladesh">Bangladesh</option>
+                                        <option value="Nepal">Nepal</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Sri Lanka">Sri Lanka</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Predict Yield</button>
+                            </div>
+                        </form>
+                        
+                        <div id="predictionResult" class="prediction-result"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about" class="page">
+        <section class="container">
+            <h2 class="section-title">About SmartCane</h2>
+            
+            <div class="mission-statement">
+                <h3 class="text-center mb-4">Mission Statement</h3>
+                <p>Our mission is to empower farmers and agribusinesses by leveraging cutting-edge technology to enhance sugarcane cultivation. By providing accurate yield predictions and actionable insights, we aim to optimize farming practices, increase productivity, and promote sustainable agriculture.</p>
+            </div>
+            
+            <h3 class="section-title">Our Team</h3>
+            <p class="section-subtitle">We are here to revolutionize sugarcane farming through technology</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-4 team-member">
+                    <img src="Dulakshi.jpg" alt="Team Member 1" class="team-photo">
+                    <h4 class="team-name">Dulakshi Guruge</h4>
+                    <p class="team-position">BSc hons. Statistics[UG]</p>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="Shenooy.jpg" alt="Team Member 2" class="team-photo">
+                    <h4 class="team-name">Shenooy Fernando</h4>
+                    <p class="team-position">BSc hons. Statistics[UG]</p>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="Dihan.jpg" alt="Team Member 3" class="team-photo">
+                    <h4 class="team-name">Dihan Ariyarathne</h4>
+                    <p class="team-position">BSc hons. Data Science[UG]</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Us Page -->
+    <div id="contact" class="page">
+        <section class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h3 class="mb-4 text-center">Get in Touch</h3>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <span>info@smartcane.com</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <span>+94 112 345 678</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-map-marker-alt contact-icon mt-1"></i>
+                            <span>123, Agritech Avenue, Colombo, Sri Lanka</span>
+                        </div>
+                        
+                        <h4 class="text-center mb-3">Follow Us</h4>
+                        <div class="social-links text-center">
+                            <a href="https://facebook.com/smartcane" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/smartcane" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/smartcane" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://linkedin.com/company/smartcane" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 SmartCane. All rights reserved.</p>
+            <p>Empowering farmers with AI-driven sugarcane yield predictions.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show the selected page and hide others
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find the link that triggered this and make it active
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Handle form submission
+        document.getElementById('yieldForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const predictButton = document.querySelector('#yieldForm button[type="submit"]');
+            const originalButtonText = predictButton.innerHTML;
+            predictButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Predicting...';
+            predictButton.disabled = true;
+            
+            // Collect form data
+            const formData = {
+                Area: parseFloat(document.getElementById('area').value),
+                Rainfall: parseFloat(document.getElementById('rainfall').value),
+                Contract_Area: parseFloat(document.getElementById('contractArea').value),
+                Fertilizer_Type: document.getElementById('fertilizerType').value,
+                Epidemic: document.getElementById('epidemic').value,
+                Water_Type: document.getElementById('waterType').value,
+                Soil_Type: document.getElementById('soilType').value,
+                Fertilizer: document.getElementById('fertilizer').value,
+                Country: document.getElementById('country').value
+            };
+            
+            // In a real implementation, you would send this data to your backend
+            // For this example, we'll simulate a prediction after a delay
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // This is where you would call your actual backend API
+                // For now, we'll use a mock prediction
+                const mockPrediction = Math.random() > 0.5 ? 'High' : 'Low';
+                
+                // Display result
+                const resultDiv = document.getElementById('predictionResult');
+                resultDiv.textContent = `Your predicted yield is ${mockPrediction}`;
+                resultDiv.className = `prediction-result ${mockPrediction.toLowerCase()}-yield`;
+                resultDiv.style.display = 'block';
+                
+                // Reset button
+                predictButton.innerHTML = originalButtonText;
+                predictButton.disabled = false;
+                
+                // Scroll to result
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+            }, 1500);
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set home page as active by default
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
