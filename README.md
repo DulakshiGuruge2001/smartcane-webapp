@@ -12,10 +12,6 @@ Watch the SmartCane application in action! Check out our [**Demo Video**](https:
 
 **SmartCane** is an AI-powered web application designed to help farmers and agribusinesses accurately predict sugarcane yield based on farm-specific conditions. By leveraging machine learning and data analysis, this project demonstrates the practical application of data science in agriculture.
 
-## 🎯 Mission
-
-Our mission is to empower farmers and agribusinesses by leveraging cutting-edge technology to enhance sugarcane cultivation. By providing accurate yield predictions and actionable insights, we aim to optimize agricultural outcomes and support sustainable farming practices in South Asia.
-
 ## ✨ Key Features
 
 ### 🎯 Accurate Predictions
@@ -168,14 +164,6 @@ The web interface includes:
 }
 ```
 
-**Response Format (Error):**
-```json
-{
-  "error": "Error message details",
-  "status": "error"
-}
-```
-
 ## 🎨 User Interface Features
 
 ### Navigation
@@ -189,40 +177,6 @@ The web interface includes:
 - **Typography**: Modern sans-serif fonts for readability
 - **Responsiveness**: Mobile-first design that adapts to all screen sizes
 - **User Feedback**: Loading states, visual result indicators, and smooth scrolling
-
-## 👥 Project Lead
-
-**Dulakshi Guruge** - Data Scientist & Full-Stack Developer
-- BSc Hons. Statistics (Undergraduate)
-- Specialized in Machine Learning, Data Analysis, and Web Application Development
-- Led the end-to-end development of SmartCane, from data preprocessing to model deployment
-- Expertise in Python, Flask, scikit-learn, and responsive web design
-
-### Supporting Team Members
-| Name | Role | Qualification |
-|------|------|---------------|
-| **Shenooy Fernando** | Data Analyst & Research | BSc Hons. Statistics (Undergraduate) |
-| **Dihan Ariyarathne** | Data Science & Analytics | BSc Hons. Data Science (Undergraduate) |
-
-## 📞 Contact Information
-
-- **Email**: info@smartcane.com
-- **Phone**: +94 112 345 678
-- **Address**: 123, Agritech Avenue, Colombo, Sri Lanka
-
-### Follow Us
-- [Facebook](https://facebook.com/smartcane)
-- [Twitter](https://twitter.com/smartcane)
-- [Instagram](https://instagram.com/smartcane)
-- [LinkedIn](https://linkedin.com/company/smartcane)
-
-## 🔐 Security Considerations
-
-- Always validate user input on both frontend and backend
-- Consider implementing CSRF protection for production deployment
-- Use environment variables for sensitive configuration
-- Implement rate limiting for the `/predict` endpoint to prevent abuse
-- Consider adding authentication for future multi-user features
 
 ## 📦 Dependencies
 
@@ -285,10 +239,6 @@ This project demonstrates comprehensive data science and software engineering ca
 - South Asian farming practices and regional variations
 - Climate and environmental factor analysis in crop yield
 
-## 📝 License
-
-This project is open source and available for educational and commercial use. Please provide appropriate attribution to Dulakshi Guruge and the SmartCane team.
-
 ## 🤝 Contributing
 
 We welcome contributions! To contribute:
@@ -297,14 +247,6 @@ We welcome contributions! To contribute:
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 🐛 Bug Reports & Feature Requests
-
-Found a bug or have a feature idea? Please open an issue on GitHub with:
-- Clear description of the issue
-- Steps to reproduce (for bugs)
-- Expected vs. actual behavior
-- Screenshots if applicable
 
 ## 📚 Future Enhancements
 
@@ -317,20 +259,5 @@ Found a bug or have a feature idea? Please open an issue on GitHub with:
 - [ ] Recommendations for crop management
 - [ ] Support for other crop types
 
-## 🙏 Acknowledgments
-
-- Developed by Dulakshi Guruge as a data science portfolio project
-- Collaborative effort with the SmartCane team members
-- Special thanks to the agricultural research community
-- Built with Flask, Bootstrap 5, and scikit-learn
-- Dedicated to supporting farmers in South Asia
-
-## 📄 Additional Documentation
-
-Refer to `Webapp.pdf` for detailed technical specifications and project documentation.
-
 ---
 
-**Made with ❤️ by Dulakshi Guruge**
-
-*Empowering farmers with AI-driven sugarcane yield predictions.*
