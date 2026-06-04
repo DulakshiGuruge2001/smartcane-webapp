@@ -2,13 +2,19 @@
 
 ![SmartCane Logo](sugercane.jpg)
 
+## 📹 Demo Video
+
+Watch the SmartCane application in action! Check out our [**Demo Video**](https://youtu.be/your-demo-video-link) to see how the app helps farmers predict sugarcane yield with AI-powered insights.
+
+> *Note: Replace the link above with your actual demo video URL*
+
 ## Overview
 
-**SmartCane** is an AI-powered web application designed to help farmers and agribusinesses accurately predict sugarcane yield based on farm-specific conditions. By leveraging machine learning and data analytics, SmartCane empowers users to make informed decisions about their sugarcane cultivation and optimize farming practices.
+**SmartCane** is an AI-powered web application designed to help farmers and agribusinesses accurately predict sugarcane yield based on farm-specific conditions. By leveraging machine learning and data analysis, this project demonstrates the practical application of data science in agriculture.
 
 ## 🎯 Mission
 
-Our mission is to empower farmers and agribusinesses by leveraging cutting-edge technology to enhance sugarcane cultivation. By providing accurate yield predictions and actionable insights, we aim to help farmers maximize productivity and profitability while optimizing resource utilization.
+Our mission is to empower farmers and agribusinesses by leveraging cutting-edge technology to enhance sugarcane cultivation. By providing accurate yield predictions and actionable insights, we aim to optimize agricultural outcomes and support sustainable farming practices in South Asia.
 
 ## ✨ Key Features
 
@@ -184,13 +190,19 @@ The web interface includes:
 - **Responsiveness**: Mobile-first design that adapts to all screen sizes
 - **User Feedback**: Loading states, visual result indicators, and smooth scrolling
 
-## 👥 Team Members
+## 👥 Project Lead
 
-| Name | Qualification |
-|------|---------------|
-| **Dulakshi Guruge** | BSc Hons. Statistics (Undergraduate) |
-| **Shenooy Fernando** | BSc Hons. Statistics (Undergraduate) |
-| **Dihan Ariyarathne** | BSc Hons. Data Science (Undergraduate) |
+**Dulakshi Guruge** - Data Scientist & Full-Stack Developer
+- BSc Hons. Statistics (Undergraduate)
+- Specialized in Machine Learning, Data Analysis, and Web Application Development
+- Led the end-to-end development of SmartCane, from data preprocessing to model deployment
+- Expertise in Python, Flask, scikit-learn, and responsive web design
+
+### Supporting Team Members
+| Name | Role | Qualification |
+|------|------|---------------|
+| **Shenooy Fernando** | Data Analyst & Research | BSc Hons. Statistics (Undergraduate) |
+| **Dihan Ariyarathne** | Data Science & Analytics | BSc Hons. Data Science (Undergraduate) |
 
 ## 📞 Contact Information
 
@@ -252,19 +264,30 @@ The Random Forest model was trained on historical sugarcane yield data from Sout
 - Water management systems
 - Fertilizer application methods
 
-## 🎓 Educational Value
+## 🎓 Project Highlights - Data Science & Development
 
-This project demonstrates:
-- Machine Learning implementation in web applications
-- Full-stack web development (Frontend + Backend)
-- Data preprocessing and feature engineering
-- RESTful API design
-- Responsive web design principles
-- Integration of ML models with web frameworks
+This project demonstrates comprehensive data science and software engineering capabilities:
+
+### Data Science Skills
+- **Machine Learning**: Implemented and optimized a Random Forest classifier for agricultural prediction
+- **Data Preprocessing**: Feature engineering, encoding, and scaling of multi-type data
+- **Model Evaluation**: Rigorous testing and validation on agricultural datasets
+- **Feature Analysis**: Identification of key factors influencing sugarcane yield
+
+### Software Development Skills
+- **Full-Stack Development**: Backend (Flask/Python) and Frontend (HTML/CSS/JavaScript)
+- **API Design**: RESTful API endpoints with proper request/response handling
+- **Data Science Integration**: Seamless integration of ML models into production web applications
+- **Responsive Design**: Mobile-first UI/UX principles and implementation
+
+### Domain Knowledge
+- Agricultural data analysis and prediction
+- South Asian farming practices and regional variations
+- Climate and environmental factor analysis in crop yield
 
 ## 📝 License
 
-This project is open source and available for educational and commercial use. Please provide appropriate attribution to the SmartCane team.
+This project is open source and available for educational and commercial use. Please provide appropriate attribution to Dulakshi Guruge and the SmartCane team.
 
 ## 🤝 Contributing
 
@@ -296,7 +319,8 @@ Found a bug or have a feature idea? Please open an issue on GitHub with:
 
 ## 🙏 Acknowledgments
 
-- Developed by the SmartCane Team
+- Developed by Dulakshi Guruge as a data science portfolio project
+- Collaborative effort with the SmartCane team members
 - Special thanks to the agricultural research community
 - Built with Flask, Bootstrap 5, and scikit-learn
 - Dedicated to supporting farmers in South Asia
@@ -307,6 +331,6 @@ Refer to `Webapp.pdf` for detailed technical specifications and project document
 
 ---
 
-**Made with ❤️ by the SmartCane Team**
+**Made with ❤️ by Dulakshi Guruge**
 
 *Empowering farmers with AI-driven sugarcane yield predictions.*
